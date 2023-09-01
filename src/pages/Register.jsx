@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import GoogleIcon from "../assets/icons/GoogleIcon";
-import { AuthContext } from "../context/AuthContext";
+import AuthContext  from "../context/AuthContext";
 
 const Register = () => {
   const [email, setEmail] = useState();

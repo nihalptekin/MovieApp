@@ -11,7 +11,7 @@ import Login from '../pages/Login'
 const AppRouter = () => {
   return (
     <div>
-        <BrowserRouter>
+       
              <Navbar/>
                  <Routes>
                 <Route path="/" element={<Main/>} />  
@@ -21,7 +21,7 @@ const AppRouter = () => {
                 <Route path="/details/:id" element={<MovieDetail />} />
                 </Routes> 
          
-        </BrowserRouter>
+    
     </div>
   )
 }
