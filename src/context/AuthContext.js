@@ -1,22 +1,30 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, 
+  createUserWithEmailAndPassword, 
+  onAuthStateChanged, 
+  signInWithEmailAndPassword, 
+  signInWithPopup, 
+  signOut, 
+  updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import React from 'react';
-import auth from '../auth/firebase';
+import {auth} from "../auth/firebase";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import { useNavigate } from "react-router-dom";
 // Creat ettikten sonra bu bize bir rovider sagliyor icin bu context yapacagimiz yapiyi sagliyor.
 
 
-let AuthContext = createContext()
+export const AuthContext = createContext();
 
 const AuthContextProvider = ({children}) => {
 
   let navigate=useNavigate()
   const [currentUser, setCurrentUser] = useState();
 
+  // userObserver'i useEffectle cagirdik. Böylece sürekli login logutu taki edecek. Biz currentUseri ona göre doldurup bosaltiyoruz. 
   useEffect(() => {
     userObserver();
   }, []);
+
   // #cagiraacagim yerden email ve passwordu gönderecgim icin icine email ve passwordu parametre olarak gönderdim. sonra istedigim yxerden kullanabilirim. 
  
        //!  ************** CREATEUSER ******************
@@ -32,6 +40,7 @@ const AuthContextProvider = ({children}) => {
       });
     toastSuccessNotify("Registered successfully")
     navigate("/")
+    console.log(userCredential);
    } catch (error) {
     console.log(error);
     toastErrorNotify(error.message)
@@ -53,7 +62,6 @@ const AuthContextProvider = ({children}) => {
       toastErrorNotify(error.message);
     }
   };
-
 
           //!  ************** SIGN OUT ******************
 const logOut =()=> {
@@ -79,14 +87,15 @@ const userObserver = () => {
 };
 
 
-     //!  ************** SIGN UP WITH GOOGLE******************
+     //!  ************** SIGN UP WITH GOOGLE ******************
 
   //* https://console.firebase.google.com/
   //* => Authentication => sign-in-method => enable Google
   //! Google ile girişi enable yap
   //* => Authentication => settings => Authorized domains => add domain
   //! Projeyi deploy ettikten sonra google sign-in çalışması için domain listesine deploy linkini ekle
-  const signUpProvider = () => {
+  
+const signUpProvider = () => {
     //? Google ile giriş yapılması için kullanılan firebase metodu
     const provider = new GoogleAuthProvider();
     //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
@@ -108,5 +117,5 @@ const values= {createUser, signIn, logOut, userObserver, signUpProvider, current
     <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
   )
 }
-
+ 
 export default AuthContextProvider;

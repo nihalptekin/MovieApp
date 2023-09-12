@@ -1,35 +1,30 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import React, { useContext } from 'react'
+import { MovieContext } from '../context/MovieContext'
 
-// const API_KEY = "";
-// const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
+const Main = () => {
+    // movie ve loading setlerini moviecontexten getirdik
+    const {movie, loading} =useContext(MovieContext)
+    // console.log(movie);
+  return (
+    <>
+    <div className='flex, justify-center'>
+    {loading ? (
+        <div
+            className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-600 mt-52"
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        
+    ) : (
+          movie.map((movie) => <MovieCard key={movie.id} {...movie} />)
+          )
+          }
 
-// const Main = () => {
-//   const [filmler, setFilmler] = useState([]);
 
-//   useEffect(() => {
-//     const getData = async () => {
-//       try {
-//         const response = await axios.get(url);
-//         setFilmler(response.data.results);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
+    </div>
+    </>
+  )
+}
 
-//     getData();
-//   }, []);
-
-//   return (
-//     <div className='flex flex-wrap justify-center text-center items-center'>
-//       {filmler.map((film) => (
-//         <div key={film.id} style={{width:"200px", background:"orange", color:"white", margin:"20px",  }}>
-//           <img src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} alt={film.title} />
-//           <p className='p-4'>{film.original_title}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Main;
+export default Main

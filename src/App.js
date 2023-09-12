@@ -1,17 +1,20 @@
 import React from "react";
 import AppRouter from "./router/AppRouter";
 import AuthContextProvider from "./context/AuthContext";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
+// import MovieContextProvider from "./context/MovieContext";
 
-function App() {
+const App = () => {
   return (
-    <div>
-    <AuthContextProvider>
-      <AppRouter/>
-      <ToastContainer/>
-    </AuthContextProvider>
+    <div className="dark:bg-[#23242a] min-h-screen">
+      <AuthContextProvider>
+        <MovieContextProvider>
+          <AppRouter />
+          <ToastContainer />
+        </MovieContextProvider>
+      </AuthContextProvider>
     </div>
   );
-}
+};
 
 export default App;
