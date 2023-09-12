@@ -2,6 +2,7 @@ import React from "react";
 import AppRouter from "./router/AppRouter";
 import AuthContextProvider from "./context/AuthContext";
 import { ToastContainer } from "react-toastify";
+import MovieContextProvider from "./context/MovieContext";
 // import MovieContextProvider from "./context/MovieContext";
 
 const App = () => {

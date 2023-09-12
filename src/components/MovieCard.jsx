@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const MovieCard = () => {
+const IMG_API = "https://image.tmdb.org/t/p/w1280";
+const defaultImage =
+  "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
+
+  let navigate = useNavigate();
+  const { currentUser } = useContext(AuthContex);
+
+const MovieCard = ({title, poster_path, overview,vote_average,id}) => {
   return (
     <div
     className="movie"
