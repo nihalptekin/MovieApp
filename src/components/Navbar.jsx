@@ -2,7 +2,7 @@ import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContex } from "../context/AuthContext";
 
 
 function classNames(...classes) {
@@ -10,7 +10,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const { logOut, currentUser } = useContext(AuthContext);
+  const { logOut, currentUser } = useContext(AuthContex);
   // const currentUser = { displayName: "nihal tekin" }; hata vermesin diye öncelikle fake currentuser olusturduk
   // const currentUser = false;
   return (

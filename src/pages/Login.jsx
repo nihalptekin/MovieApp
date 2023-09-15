@@ -1,18 +1,17 @@
 import React, { useContext, useState } from "react";
 import GoogleIcon from "../assets/icons/GoogleIcon";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContex } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const { signIn, signUpProvider, forgotPassword } = useContext(AuthContext);
+  const { signIn, signUpProvider, forgotPassword } = useContext(AuthContex);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signIn(email, password)
+    signIn(email, password);
   };
-
 
   return (
     <div className="overflow-hidden flex-1 h-screen justify-center items-center bg-[#23242a]">

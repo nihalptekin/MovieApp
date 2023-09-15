@@ -1,18 +1,20 @@
 import React, { useContext, useState } from 'react'
 import { MovieContext } from '../context/MovieContext'
 import MovieCard from '../components/MovieCard'
-import { AuthContext } from '../context/AuthContext';
+import { AuthContex } from '../context/AuthContext';
 import { toastWarnNotify } from '../helper/ToastNotify';
 
 const API_KEY = process.env.REACT_APP_TMDB_KEY;
 const SEARCH_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
+
+//query hangi movie ise onu getirmesi icin yazdik. 
 
 
 const Main = () => {
     // movie ve loading setlerini moviecontexten getirdik
     const [searchTerm, setSearchTerm] = useState("");
     const {movie, loading, getMovies} =useContext(MovieContext)
-    const {currentUser} =useContext(AuthContext)
+    const {currentUser} =useContext(AuthContex)
     // console.log(movie);
 
     const handleSubmit = (e) => {
@@ -39,7 +41,7 @@ const Main = () => {
         </button>
       </form>
 
-    <div className='flex, justify-center, flex-wrap'>
+    <div className='flex justify-center flex-wrap'>
     {loading ? (
         <div
             className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-600 mt-52"
@@ -60,4 +62,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default Main;
