@@ -45,7 +45,7 @@ const MovieCard = ({title, poster_path, overview,vote_average,id}) => {
       )}
     </div>
     <div className="movie-over">
-      <h2>{title}</h2>
+      <h2>Overview</h2>
       <p>{overview}</p>
     </div>
   </div>

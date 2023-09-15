@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import GoogleIcon from "../assets/icons/GoogleIcon";
-import AuthContex  from "../context/AuthContext";
+import {AuthContex}  from "../context/AuthContext";
 
 const Register = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
-  const { createUser, signUpProvider} = useContext(AuthContex);
+  const {createUser, signUpProvider} = useContext(AuthContex);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

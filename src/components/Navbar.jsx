@@ -3,6 +3,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
 import { AuthContex } from "../context/AuthContext";
+import Switch from "./Switch";
 
 
 function classNames(...classes) {
@@ -28,12 +29,12 @@ export default function Navbar() {
               {currentUser && (
                 <h5 className="mr-2 capitalize">{currentUser?.displayName}</h5>
               )}
-              
+              <Switch />
               {/* Profile dropdown */}
               <Menu as="div" className="relative ml-3">
                 <div>
                   <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                    <span className="sr-only">Open user menu</span>
+                    <span className="sr-only">Open User Menu</span>
                     <img
                       className="h-8 w-8 rounded-full"
                       src={currentUser?.photoURL || avatar}
